@@ -1,0 +1,27 @@
+interface Node{
+    id: ID!
+}
+
+#Root Type
+type Query{
+    viewer: Viewer
+}
+
+#Current Viewer
+type Viewer implements Node{
+    id:ID!
+    ipAddress: String!
+    port: Int!
+    adLogin(adLoginInput: ADLoginInput!): ADUser
+}
+
+input ADLoginInput{
+    username:String!
+    password:String!
+}
+
+#An active directory user
+type ADUser implements Node{
+    id: ID!
+    displayName: String
+}
